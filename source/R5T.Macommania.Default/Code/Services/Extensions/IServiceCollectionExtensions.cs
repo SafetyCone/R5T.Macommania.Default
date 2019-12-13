@@ -10,14 +10,23 @@ namespace R5T.Macommania.Default
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator>(this IServiceCollection services)
-            where TStringlyTypedPathOperator: class, IStringlyTypedPathOperator
+        public static IServiceCollection UseDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator, TExecutableFilePathProvider>(this IServiceCollection services)
+            where TStringlyTypedPathOperator : class, IStringlyTypedPathOperator
+            where TExecutableFilePathProvider: class, IExecutableFilePathProvider
         {
             services
                 .TryAddSingletonFluent<IStringlyTypedPathOperator, TStringlyTypedPathOperator>()
-                .TryAddSingletonFluent<IExecutableFilePathProvider, DefaultExecutableFilePathProvider>()
+                .TryAddSingletonFluent<IExecutableFilePathProvider, TExecutableFilePathProvider>()
                 .AddSingleton<IExecutableFileDirectoryPathProvider, DefaultExecutableFileDirectoryPathProvider>()
                 ;
+
+            return services;
+        }
+
+        public static IServiceCollection UseDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator>(this IServiceCollection services)
+            where TStringlyTypedPathOperator: class, IStringlyTypedPathOperator
+        {
+            services.UseDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator, DefaultExecutableFilePathProvider>();
 
             return services;
         }
