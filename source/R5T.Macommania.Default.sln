@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R5T.Lombardy.Base", "..\..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R5T.Dacia", "..\..\R5T.Dacia\source\R5T.Dacia\R5T.Dacia.csproj", "{510B234E-CAB0-4E75-AE58-82AF61913724}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R5T.Dacia.Extensions", "..\..\R5T.Dacia.Extensions\source\R5T.Dacia.Extensions\R5T.Dacia.Extensions.csproj", "{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,18 @@ Global
 		{510B234E-CAB0-4E75-AE58-82AF61913724}.Release|x64.Build.0 = Release|Any CPU
 		{510B234E-CAB0-4E75-AE58-82AF61913724}.Release|x86.ActiveCfg = Release|Any CPU
 		{510B234E-CAB0-4E75-AE58-82AF61913724}.Release|x86.Build.0 = Release|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Debug|x64.Build.0 = Debug|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Debug|x86.Build.0 = Debug|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Release|x64.ActiveCfg = Release|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Release|x64.Build.0 = Release|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Release|x86.ActiveCfg = Release|Any CPU
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +121,7 @@ Global
 		{3E28C838-D1BA-417B-BA4B-4EB302F4BD68} = {62B89E58-8554-447F-86BE-AE0419B09C30}
 		{62162785-6136-42C4-952C-0517B1AE9990} = {62B89E58-8554-447F-86BE-AE0419B09C30}
 		{510B234E-CAB0-4E75-AE58-82AF61913724} = {62B89E58-8554-447F-86BE-AE0419B09C30}
+		{F374DBFB-6959-49AA-BABA-37BE1DCAAD12} = {62B89E58-8554-447F-86BE-AE0419B09C30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8D3F30A-87DE-4691-9525-53F98D3C5176}
