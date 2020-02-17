@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-using R5T.Dacia.Extensions;
+using R5T.Dacia;
 using R5T.Lombardy;
 
 
@@ -10,25 +10,52 @@ namespace R5T.Macommania.Default
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection UseDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator, TExecutableFilePathProvider>(this IServiceCollection services)
-            where TStringlyTypedPathOperator : class, IStringlyTypedPathOperator
-            where TExecutableFilePathProvider: class, IExecutableFilePathProvider
+        /// <summary>
+        /// Adds the <see cref="DefaultExecutableFilePathProvider"/> implementation of <see cref="IExecutableFilePathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static IServiceCollection AddDefaultExecutableFilePathProvider(this IServiceCollection services)
+        {
+            services.AddSingleton<IExecutableFilePathProvider, DefaultExecutableFilePathProvider>();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="DefaultExecutableFilePathProvider"/> implementation of <see cref="IExecutableFilePathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static ServiceAction<IExecutableFilePathProvider> AddDefaultExecutableFilePathProviderAction(this IServiceCollection services)
+        {
+            var serviceAction = new ServiceAction<IExecutableFilePathProvider>(() => services.AddDefaultExecutableFilePathProvider());
+            return serviceAction;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="DefaultExecutableFileDirectoryPathProvider"/> implementation of <see cref="IExecutableFileDirectoryPathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static IServiceCollection AddDefaultExecutableFileDirectoryPathProvider(this IServiceCollection services,
+            ServiceAction<IExecutableFilePathProvider> addExecutableFilePathProvider,
+            ServiceAction<IStringlyTypedPathOperator> addStringlyTypedPathOperator)
         {
             services
-                .TryAddSingletonFluent<IStringlyTypedPathOperator, TStringlyTypedPathOperator>()
-                .TryAddSingletonFluent<IExecutableFilePathProvider, TExecutableFilePathProvider>()
                 .AddSingleton<IExecutableFileDirectoryPathProvider, DefaultExecutableFileDirectoryPathProvider>()
+                .RunServiceAction(addExecutableFilePathProvider)
+                .RunServiceAction(addStringlyTypedPathOperator)
                 ;
 
             return services;
         }
 
-        public static IServiceCollection UseDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator>(this IServiceCollection services)
-            where TStringlyTypedPathOperator: class, IStringlyTypedPathOperator
+        /// <summary>
+        /// Adds the <see cref="DefaultExecutableFileDirectoryPathProvider"/> implementation of <see cref="IExecutableFileDirectoryPathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static ServiceAction<IExecutableFileDirectoryPathProvider> AddDefaultExecutableFileDirectoryPathProviderAction(this IServiceCollection services,
+            ServiceAction<IExecutableFilePathProvider> addExecutableFilePathProvider,
+            ServiceAction<IStringlyTypedPathOperator> addStringlyTypedPathOperator)
         {
-            services.UseDefaultExecutableFileDirectoryPathProvider<TStringlyTypedPathOperator, DefaultExecutableFilePathProvider>();
-
-            return services;
+            var serviceAction = new ServiceAction<IExecutableFileDirectoryPathProvider>(() => services.AddDefaultExecutableFileDirectoryPathProvider(
+                addExecutableFilePathProvider,
+                addStringlyTypedPathOperator));
+            return serviceAction;
         }
     }
 }
