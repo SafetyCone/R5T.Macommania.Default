@@ -3,7 +3,7 @@
 
 namespace R5T.Macommania.Default
 {
-    public class DefaultExecutableFilePathProvider : IExecutableFilePathProvider
+    public class ExecutableFilePathProvider : IExecutableFilePathProvider
     {
         public string GetExecutableFilePath()
         {

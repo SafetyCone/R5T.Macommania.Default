@@ -5,13 +5,13 @@ using R5T.Lombardy;
 
 namespace R5T.Macommania.Default
 {
-    public class DefaultExecutableFileDirectoryPathProvider : IExecutableFileDirectoryPathProvider
+    public class ExecutableFileDirectoryPathProvider : IExecutableFileDirectoryPathProvider
     {
         private IExecutableFilePathProvider ExecutableFilePathProvider { get; }
         private IStringlyTypedPathOperator StringlyTypedPathOperator { get; }
 
 
-        public DefaultExecutableFileDirectoryPathProvider(IExecutableFilePathProvider executableFilePathProvider, IStringlyTypedPathOperator stringlyTypedPathOperator)
+        public ExecutableFileDirectoryPathProvider(IExecutableFilePathProvider executableFilePathProvider, IStringlyTypedPathOperator stringlyTypedPathOperator)
         {
             this.ExecutableFilePathProvider = executableFilePathProvider;
             this.StringlyTypedPathOperator = stringlyTypedPathOperator;
